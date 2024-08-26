@@ -10,7 +10,6 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-
 # Enable logging
 logger:
 
@@ -21,12 +20,12 @@ web_server:
 # Enable OTA updates
 ota:
   - platform: esphome
-    password: "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+    password: "xxxxxx"
 
 # Enable Home Assistant API
 api:
   encryption:
-    key: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    key: "yyyyyy"
 
 # Define UART component for RS485 communication
 uart:
@@ -48,23 +47,27 @@ switch:
 # Template sensor to hold temperature data
 sensor:
   - platform: template
-    name: "Sauna Temperature Sensor"
+    name: "ESP-Tylo Sauna Temperature"
     id: sauna_temperature
     unit_of_measurement: "°C"
-    accuracy_decimals: 2
+    accuracy_decimals: 0  # Show 0 decimals
     update_interval: never
+
+# Binary sensors for heater and light status
+binary_sensor:
+  - platform: template
+    name: "ESP-Tylo Heater Status"
+    id: heater_status
+    device_class: heat  # Represents a heating device
+
+  - platform: template
+    name: "ESP-Tylo Light Status"
+    id: light_status
+    device_class: light  # Represents a light device
 
 # Custom component
 custom_component:
   - lambda: |-
-      auto custom_sensor = new CustomSerialSensor(id(uart_bus), id(max485_de_re), id(sauna_temperature));
+      auto custom_sensor = new CustomSerialSensor(id(uart_bus), id(max485_de_re), id(sauna_temperature), id(heater_status), id(light_status));
       App.register_component(custom_sensor);
       return {custom_sensor};
-
-# Text sensor for displaying hex data
-text_sensor:
-  - platform: template
-    name: "Hex Data"
-    id: hex_data
-    update_interval: never
-    
