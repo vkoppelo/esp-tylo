@@ -6,19 +6,14 @@
 Features:
 
 - [X] **Shows current temperature.**
-
 *Initial value is 0°. Relies on updates that are sent by the heater.*
-
 *My heater/panel is configured for celsius and therefor only tested for celsius.* 
 - [X] **Enable/disable heater.**
-
 *Status is unknown until the first toggle of heater or lights.*
 - [X] **Enable/disable lights.**
-
 *Status is unknown until the first toggle of heater or lights.*
 - [ ] **Find a way to update status without toggling heater/lamps.**
 - [ ] **Control of temperature setting.**
-
 *Low priority.*
 
 
