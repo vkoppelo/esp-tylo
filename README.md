@@ -6,16 +6,23 @@
 Features:
 
 - [X] **Shows current temperature.**
+
 *Initial value is 0°. Relies on updates that are sent by the heater.*
+
 *My heater/panel is configured for celsius and therefor only tested for celsius.* 
 - [X] **Enable/disable heater.**
+
 *Status is unknown until the first toggle of heater or lights.*
 - [X] **Enable/disable lights.**
+
 *Status is unknown until the first toggle of heater or lights.*
 - [ ] **Find a way to update status without toggling heater/lamps.**
 - [ ] **Control of temperature setting.**
+
 *Low priority.*
 
+
+## Services
 Following services can be called from Home Assistant:
 
 **esp_tylo_heater_on** - Heater on.
@@ -23,6 +30,8 @@ Following services can be called from Home Assistant:
 **esp_tylo_light_on** - Lights on.
 **esp_tylo_light_off** - Lights off.
 
+
+## Setup
 My setup ("man-in-the-middle"):
 * LOLIN S2 Mini.
 * Generic (2$) MAX485-module.
