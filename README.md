@@ -7,7 +7,7 @@ Features:
 
 - [X] **Shows current temperature.**\
 *Initial value is 0°. Relies on updates that are sent by the heater.*\
-*My heater/panel is configured for celsius and therefor only tested for celsius.* 
+*My heater/panel is configured for celsius and therefore only tested for celsius.* 
 - [X] **Enable/disable heater.**\
 *Status is unknown until the first toggle of heater or lights.*
 - [X] **Enable/disable lights.**\
@@ -23,7 +23,7 @@ Following services can be called from Home Assistant:
 **esp_tylo_heater_on** - Heater on.\
 **esp_tylo_heater_off** - Heater off.\
 **esp_tylo_light_on** - Lights on.\
-**esp_tylo_light_off** - Lights off.\
+**esp_tylo_light_off** - Lights off.
 
 
 ## Setup
@@ -48,7 +48,9 @@ Connections between MAX485 and ESP32.
 * VCC to VBUS.
 * GND to GND.
 
-**BE CAREFUL AS 2 OF THE PINS PROVIDE 12V/GND AND WILL FRY YOUR ESP32 OR IN WORST CASE DAMAGE YOUR TYLÖ-HEATER!**
+
+**BE CAREFUL AS 2 OF THE PINS PROVIDE 12V/GND AND WILL FRY YOUR ESP32 OR IN WORST CASE DAMAGE YOUR TYLÖ-HEATER IF WIRED INCORRECTLY!**
+
 
 ![Pinout provided by Tylö](https://github.com/vkoppelo/esp-tylo/blob/main/Images/pinout.jpg)
 
