@@ -7,7 +7,7 @@ Features:
 
 - [X] **Shows current temperature.**\
 *Initial value is 0°. Relies on updates that are sent by the heater.*\
-*My heater/panel is configured for celsius and therefore only tested for celsius.* 
+*My heater/panel is configured for celsius and therefore only tested with celsius.* 
 - [X] **Enable/disable heater.**\
 *Status is unknown until the first toggle of heater or lights.*
 - [X] **Enable/disable lights.**\
