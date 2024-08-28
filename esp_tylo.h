@@ -68,7 +68,7 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
   void heater_off() {
     if (heater_status_->state) {
       de_re_switch_->turn_on(); // Set to transmit mode before sending all messages
-      delay(10);
+      delay(15);
       send_message("984007700000000001820A9C");
       delay(10);
       de_re_switch_->turn_off(); // Set to receive mode after all messages
@@ -78,7 +78,7 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
   void heater_on() {
     if (!heater_status_->state) {
       de_re_switch_->turn_on(); // Set to transmit mode before sending all messages
-      delay(10);
+      delay(15);
       send_message("984007700000000001820A9C");
       delay(10);
       de_re_switch_->turn_off(); // Set to receive mode after all messages
@@ -88,7 +88,7 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
   void light_on() {
     if (!light_status_->state) {
       de_re_switch_->turn_on(); // Set to transmit mode before sending all messages
-      delay(10);
+      delay(15);
       send_message("984007700000000002A3B89C");
       delay(10);
       de_re_switch_->turn_off(); // Set to receive mode after all messages
@@ -98,7 +98,7 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
   void light_off() {
     if (light_status_->state) {
       de_re_switch_->turn_on(); // Set to transmit mode before sending all messages
-      delay(10);
+      delay(15);
       send_message("984007700000000002A3B89C");
       delay(10);
       de_re_switch_->turn_off(); // Set to receive mode after all messages
@@ -122,7 +122,6 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
 
     // Send the byte array
     write_array(byte_array);
-    delay(20); // Allow some time to transmit the message
   }
 
   // Utility function to convert hex string to byte array
@@ -157,6 +156,8 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
         temperature = ((bb - 24) * 256 + cc) / 9.0;
       } else if (aa_hex == "16") {
         temperature = ((bb - 128) * 256 + cc) / 9.0;
+	  } else if (aa_hex == "17") {
+        temperature = ((bb - 232) * 256 + cc) / 9.0;
       } else {
         // If other conditions for temperature are found, handle them appropriately
         return;
@@ -178,16 +179,14 @@ class CustomSerialSensor : public Component, public UARTDevice, public CustomAPI
       bool heater_on = false;
       bool light_on = false;
         
-      // Determine the heater and light status
-      if (status >= 16) {
-        status -= 16;
-        heater_on = true;
-      }
-      
-      if (status >= 8) {
-        status -= 8;
-        light_on = true;
-      }      
+	  // Determine the heater and light status using bitwise operations
+	  if (status & 16) {
+		heater_on = true;
+	  }
+
+	  if (status & 8) {
+		light_on = true;
+	  }
 
       // Publish the heater and light status to Home Assistant
       heater_status_->publish_state(heater_on);

@@ -7,12 +7,13 @@ Features:
 
 - [X] **Shows current temperature.**\
 *Initial value is 0°. Relies on updates that are sent by the heater.*\
+*Updates are sent when temperature sensor detects a change.*\
 *My heater/panel is configured for celsius and therefore only tested with celsius.* 
 - [X] **Enable/disable heater.**\
 *Status is unknown until the first toggle of heater or lights.*
 - [X] **Enable/disable lights.**\
 *Status is unknown until the first toggle of heater or lights.*
-- [ ] **Find a way to update status without toggling heater/lamps.**
+- [ ] **Find a way to update status without toggling heater/lights.**
 - [ ] **Control of temperature setting.**\
 *Low priority.*
 
@@ -49,7 +50,7 @@ Connections between MAX485 and ESP32.
 * GND to GND.
 
 
-**BE CAREFUL AS 2 OF THE PINS PROVIDE 12V/GND AND WILL FRY YOUR ESP32 OR IN WORST CASE DAMAGE YOUR TYLÖ-HEATER IF WIRED INCORRECTLY!**
+## **BE CAREFUL AS 2 OF THE PINS PROVIDE 12V/GND AND WILL FRY YOUR ESP32 OR IN WORST CASE DAMAGE YOUR TYLÖ-HEATER IF WIRED INCORRECTLY!**
 
 
 ![Pinout provided by Tylö](https://github.com/vkoppelo/esp-tylo/blob/main/Images/pinout.jpg)
